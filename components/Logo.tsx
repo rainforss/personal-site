@@ -10,10 +10,10 @@ const Logo: React.FunctionComponent<ILogoProps> = (props) => {
   return (
     <motion.div
       variants={pageLoad}
-      initial={{ transform: "translateX(-100%)", opacity: 0 }}
+      initial={{ transform: "translate(-100%,-50%)", opacity: 0 }}
       animate="enterFromLeft"
       exit="exitToLeft"
-      className="h-40 w-64 absolute top-6 -left-4 z-20"
+      className="h-40 w-64 absolute top-24 -left-4 z-20"
     >
       <Link href="/" passHref>
         <a>

@@ -26,14 +26,14 @@ export const pageLoad: Variants = {
     animationFillMode: "forwards",
   },
   enterFromLeft: (i) => ({
-    transform: "translateX(0%)",
+    transform: "translate(0%,-50%)",
     opacity: 1,
     transitionTimingFunction: "cubic-bezier(0.2,-2,0.8,2)",
     transition: { duration: 1, delay: 1.5 },
     animationFillMode: "forwards",
   }),
   exitToLeft: {
-    transform: "translateX(-100%)",
+    transform: "translateX(-100%,-50%)",
     opacity: 0,
     transitionTimingFunction: "cubic-bezier(0.2,-2,0.8,2)",
     transition: { duration: 1, delay: 0 },

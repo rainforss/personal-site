@@ -48,6 +48,7 @@ const MenuButton: React.FunctionComponent<IMenuButtonProps> = ({
     <motion.div
       className="fixed top-1/2 left-20 w-10 h-5 flex flex-col cursor-pointer justify-between items-stretch z-40"
       variants={pageLoad}
+      initial={{ transform: "translate(-100%,-50%)", opacity: 0 }}
       animate="enterFromLeft"
       onClick={toggle}
     >
