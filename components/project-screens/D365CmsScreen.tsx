@@ -46,9 +46,12 @@ const D365CmsScreen: React.FunctionComponent<ID365CmsScreenProps> = (props) => {
               translateX="0"
               translateY="1/2"
               rotatingUrls={[
-                { text: "Canucks Rugby", url: "www.canucksrugby.org" },
-                { text: "Betach Solutions", url: "betachnew.vercel.app" },
-                { text: "Rainforss", url: "www.rainforss.me" },
+                { text: "Canucks Rugby", url: "https://www.canucksrugby.org" },
+                {
+                  text: "Betach Solutions",
+                  url: "https://betachnew.vercel.app",
+                },
+                { text: "Rainforss", url: "https://www.rainforss.me" },
               ]}
             />
           </div>

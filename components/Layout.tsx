@@ -7,6 +7,7 @@ const Layout: React.FunctionComponent<ILayoutProps> = ({ children }) => {
   return (
     <>
       <Navigation />
+
       {children}
     </>
   );

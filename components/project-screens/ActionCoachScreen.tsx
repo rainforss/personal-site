@@ -48,9 +48,9 @@ const ActionCoachScreen: React.FunctionComponent<IActionCoachScreenProps> = (
               translateX="0"
               translateY="1/2"
               rotatingUrls={[
-                { text: "Langara", url: "https://langara.ca/" },
-                { text: "Langara", url: "https://langara.ca/" },
-                { text: "Langara", url: "https://langara.ca/" },
+                { text: "ActionCOACH", url: "https://www.actioncoach.com/" },
+                { text: "ActionCOACH", url: "https://www.actioncoach.com/" },
+                { text: "ActionCOACH", url: "https://www.actioncoach.com/" },
               ]}
             />
           </div>

@@ -12,19 +12,33 @@ interface IPageControlProps {
 
 export const pageLoad: Variants = {
   enterFromRight: (i) => ({
-    transform: ["translate(100%,-50%)", "translate(0%,-50%)"],
-    opacity: [0, 1],
+    transform: "translate(0%,-50%)",
+    opacity: 1,
     transitionTimingFunction: "cubic-bezier(0.2,-2,0.8,2)",
     transition: { duration: 1, delay: 1.5 },
     animationFillMode: "forwards",
   }),
+  exitToRight: {
+    transform: "translate(100%,-50%)",
+    opacity: 0,
+    transitionTimingFunction: "cubic-bezier(0.2,-2,0.8,2)",
+    transition: { duration: 1, delay: 0 },
+    animationFillMode: "forwards",
+  },
   enterFromLeft: (i) => ({
-    transform: ["translate(-100%,-50%)", "translate(0%,-50%)"],
-    opacity: [0, 1],
+    transform: "translateX(0%)",
+    opacity: 1,
     transitionTimingFunction: "cubic-bezier(0.2,-2,0.8,2)",
     transition: { duration: 1, delay: 1.5 },
     animationFillMode: "forwards",
   }),
+  exitToLeft: {
+    transform: "translateX(-100%)",
+    opacity: 0,
+    transitionTimingFunction: "cubic-bezier(0.2,-2,0.8,2)",
+    transition: { duration: 1, delay: 0 },
+    animationFillMode: "forwards",
+  },
 };
 
 export const track: Variants = {
@@ -63,7 +77,9 @@ const PageControl: React.FunctionComponent<IPageControlProps> = (props) => {
   return (
     <motion.div
       variants={pageLoad}
+      initial={{ transform: "translate(100%,-50%)", opacity: 0 }}
       animate="enterFromRight"
+      exit="exitToRight"
       className="h-21 w-10 flex flex-col justify-between items-stretch absolute top-1/2 right-20 z-20"
     >
       <div
