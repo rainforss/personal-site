@@ -1,23 +1,24 @@
 import { AnimatePresence } from "framer-motion";
 import type { NextPage } from "next";
 import React from "react";
-import GridBackground from "../components/GridBackground";
-import Layout from "../components/Layout";
-import PageControl from "../components/PageControl";
-import AboutScreen from "../components/home-screens/AboutScreen";
-import BlogScreen from "../components/home-screens/BlogScreen";
-import ContactScreen from "../components/home-screens/ContactScreen";
-import EntryScreen from "../components/home-screens/EntryScreen";
-import ProjectScreen from "../components/home-screens/ProjectScreen";
-import { usePrevious } from "../hooks/usePrevious";
+import GridBackground from "../../components/GridBackground";
+import Layout from "../../components/Layout";
+import PageControl from "../../components/PageControl";
+import AboutScreen from "../../components/home-screens/AboutScreen";
+import BlogScreen from "../../components/home-screens/BlogScreen";
+import ContactScreen from "../../components/home-screens/ContactScreen";
+import EntryScreen from "../../components/home-screens/EntryScreen";
+import ProjectScreen from "../../components/home-screens/ProjectScreen";
+import { usePrevious } from "../../hooks/usePrevious";
+import LangaraScreen from "../../components/project-screens/LangaraScreen";
+import ActionCoachScreen from "../../components/project-screens/ActionCoachScreen";
+import RFPScreen from "../../components/project-screens/RFPScreen";
+import D365CmsScreen from "../../components/project-screens/D365CmsScreen";
+import HansenScreen from "../../components/project-screens/HansenScreen";
 
-const Home: NextPage = () => {
+const Project: NextPage = () => {
   const [[currentScreen, direction], setCurrentScreen] = React.useState([1, 0]);
   const previousScreen = usePrevious(currentScreen);
-  const scroll = (newDirection: number) => {
-    setCurrentScreen([currentScreen + newDirection, newDirection]);
-  };
-  const screens = [EntryScreen, AboutScreen, ProjectScreen];
   return (
     <Layout>
       <PageControl
@@ -66,15 +67,17 @@ const Home: NextPage = () => {
         }
       >
         <AnimatePresence custom={direction}>
-          {currentScreen === 1 && <EntryScreen key="1" custom={direction} />}
-          {currentScreen === 2 && <AboutScreen key="2" custom={direction} />}
-          {currentScreen === 3 && <ProjectScreen key="3" custom={direction} />}
-          {currentScreen === 4 && <BlogScreen key="4" custom={direction} />}
-          {currentScreen === 5 && <ContactScreen key="5" custom={direction} />}
+          {currentScreen === 1 && <D365CmsScreen key="1" custom={direction} />}
+          {currentScreen === 2 && <LangaraScreen key="2" custom={direction} />}
+          {currentScreen === 3 && (
+            <ActionCoachScreen key="3" custom={direction} />
+          )}
+          {currentScreen === 4 && <HansenScreen key="4" custom={direction} />}
+          {currentScreen === 5 && <RFPScreen key="5" custom={direction} />}
         </AnimatePresence>
       </GridBackground>
     </Layout>
   );
 };
 
-export default Home;
+export default Project;
