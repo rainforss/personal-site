@@ -1,0 +1,6 @@
+Sitemap: https://personal-site-mocha-pi.vercel.app/api/static-pages-sitemap
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*
