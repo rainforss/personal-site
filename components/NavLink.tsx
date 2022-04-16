@@ -42,7 +42,9 @@ const NavLink: React.FunctionComponent<INavLinkProps> = (props) => {
   return (
     <motion.div className="relative font-main-font" whileHover="hover">
       <Link href={props.url} passHref>
-        <a className="text-white text-3xl">{props.text}</a>
+        <motion.a className="text-white text-3xl" variants={linkTextVariants}>
+          {props.text}
+        </motion.a>
       </Link>
       <div className="relative w-full h-1 mt-2 overflow-hidden">
         <span className="absolute bottom-0 left-0 w-full h-1 bg-slate-300"></span>

@@ -35,7 +35,7 @@ const About: NextPage = () => {
         <GridBackground>
           <AnimatePresence initial={false}>
             <div
-              className="w-full h-full grid grid-rows-4 grid-cols-4"
+              className="w-full h-full grid grid-rows-4 grid-cols-4 font-main-font"
               key="main"
             >
               <div className="col-start-2 col-span-2 row-start-1 row-span-4 text-slate-200 py-16 overflow-hidden">
