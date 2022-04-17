@@ -5,7 +5,7 @@ export const devtoService = (apiKey: string) => {
   return {
     getAllMyArticles: async (size: number) => {
       const result = await axios.get(
-        `https://dev.to/api/articles?username=rainforss&page=1&per_page=${size}`,
+        `https://dev.to/api/articles/me/published?page=1&per_page=${size}`,
         {
           headers: { "api-key": apiKey },
         }
@@ -14,7 +14,7 @@ export const devtoService = (apiKey: string) => {
     },
     getMyArticlesByPage: async (pageNumber: number, pageLimit: number) => {
       const result = await axios.get(
-        `https://dev.to/api/articles?username=rainforss&page=${pageNumber}&per_page=${pageLimit}`,
+        `https://dev.to/api/articles/me/published?page=${pageNumber}&per_page=${pageLimit}`,
         {
           headers: { "api-key": apiKey },
         }
