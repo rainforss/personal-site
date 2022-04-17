@@ -12,6 +12,8 @@ export interface BatchArticle {
   tag_list: string[];
   reading_time_minutes: number;
   canonical_url: string;
+  body_markdown: string;
+  body_html: string;
 }
 
 export interface SingleArticle {

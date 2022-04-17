@@ -12,13 +12,14 @@ import { BsFillEyeFill } from "react-icons/bs";
 import { FaHeart, FaCommentDots } from "react-icons/fa";
 import Link from "next/link";
 import NavLink from "../../components/NavLink";
+import MarkdownIt from "markdown-it";
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
 interface SingleBlogPageProps {
-  devToArticle: SingleArticle;
+  devToArticle: BatchArticle;
   recentArticles: BatchArticle[];
 }
 
@@ -104,7 +105,7 @@ const SingleBlog: NextPage<SingleBlogPageProps> = ({
                       </span>{" "}
                       minutes reading
                     </small>
-                    {devToArticle.tags.map((t) => (
+                    {devToArticle.tag_list.map((t) => (
                       <small key={t} className="mr-4">
                         #<span className="text-[#fc7c2c]">{t}</span>
                       </small>
@@ -150,9 +151,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams;
-  const devToArticle = await devtoService(
+  const devToArticles = await devtoService(
     process.env.DEVTO_API_KEY!
-  ).getArticleBySlug(slug);
+  ).getAllMyArticles(50);
+  const devToArticle = devToArticles.find((a) => a.slug === slug);
+  const md = new MarkdownIt();
+  if (!devToArticle) {
+    return {
+      props: {},
+    };
+  }
+  devToArticle.body_html = md.render(devToArticle.body_markdown);
   const recentArticles = await devtoService(
     process.env.DEVTO_API_KEY!
   ).getMyArticlesByPage(1, 5);
