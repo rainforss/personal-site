@@ -162,9 +162,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     };
   }
   devToArticle.body_html = md.render(devToArticle.body_markdown);
-  const recentArticles = await devtoService(
-    process.env.DEVTO_API_KEY!
-  ).getMyArticlesByPage(1, 5);
+  const recentArticles = devToArticles.slice(0, 4);
   return {
     props: {
       devToArticle,
