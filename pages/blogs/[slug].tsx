@@ -34,7 +34,7 @@ const SingleBlog: NextPage<SingleBlogPageProps> = ({
       <NextSeo
         title={devToArticle.title}
         description={devToArticle.description}
-        canonical={devToArticle.canonical_url}
+        canonical={`https://rainforss.me/blogs/${devToArticle.slug}`}
         openGraph={{
           url: `https://rainforss.me/blogs/${devToArticle.slug}`,
           title: devToArticle.title,

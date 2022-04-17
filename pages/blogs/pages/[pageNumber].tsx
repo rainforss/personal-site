@@ -41,10 +41,10 @@ const Blogs: NextPage<BlogsPageProps> = ({ articles }) => {
       <NextSeo
         title="Jake's Blogs Page"
         description="Blogs page of Jake's Personal Site. Read all community posts and blogs written by Jake."
-        canonical="https://rainforss.me/blogs"
+        canonical={`https://rainforss.me/blogs/${pageNumber}`}
         openGraph={{
-          url: "https://rainforss.me/blogs",
-          title: "Jake's Blogs Page",
+          url: `https://rainforss.me/blogs/${pageNumber}`,
+          title: `Jake's Blogs Page ${pageNumber}`,
           description:
             "Blogs page of Jake's Personal Site. Read all community posts and blogs written by Jake.",
           site_name: "Jake's Personal Site",
