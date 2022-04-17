@@ -14,6 +14,8 @@ import Logo from "../components/Logo";
 import { NextSeo } from "next-seo";
 import { devtoService } from "../services/devtoArticle";
 import { BatchArticle } from "../types/devto";
+import fs from "fs";
+import path from "path";
 
 interface HomePageProps {
   devToArticles: BatchArticle[];
@@ -141,9 +143,24 @@ const Home: NextPage<HomePageProps> = ({ devToArticles }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const devToArticles = await devtoService(
-    process.env.DEVTO_API_KEY!
-  ).getAllMyArticles(30);
+  let devToArticles: BatchArticle[] = [];
+  const cachedContent = fs.readFileSync(
+    path.join(process.cwd(), "buildCache.json"),
+    "utf-8"
+  );
+  const cache = JSON.parse(cachedContent);
+  if (!!cache) {
+    devToArticles = cache;
+  } else {
+    devToArticles = await devtoService(
+      process.env.DEVTO_API_KEY!
+    ).getAllMyArticles(30);
+    fs.writeFileSync(
+      path.join(process.cwd(), "buildCache.json"),
+      JSON.stringify(devToArticles)
+    );
+  }
+
   return {
     props: {
       devToArticles,

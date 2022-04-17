@@ -18,6 +18,8 @@ import UnderlineButton from "../../../components/UnderlineButton";
 import { usePrevious } from "../../../hooks/usePrevious";
 import { devtoService } from "../../../services/devtoArticle";
 import { BatchArticle } from "../../../types/devto";
+import fs from "fs";
+import path from "path";
 
 interface BlogsPageProps {
   articles: BatchArticle[];
@@ -228,9 +230,24 @@ const Blogs: NextPage<BlogsPageProps> = ({ articles }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = await devtoService(
-    process.env.DEVTO_API_KEY!
-  ).getAllMyArticles(30);
+  let articles: BatchArticle[] = [];
+  const cachedContent = fs.readFileSync(
+    path.join(process.cwd(), "buildCache.json"),
+    "utf-8"
+  );
+  const cache = JSON.parse(cachedContent);
+  if (!!cache) {
+    articles = cache;
+  } else {
+    articles = await devtoService(process.env.DEVTO_API_KEY!).getAllMyArticles(
+      30
+    );
+    fs.writeFileSync(
+      path.join(process.cwd(), "buildCache.json"),
+      JSON.stringify(articles)
+    );
+  }
+
   const paths: (
     | string
     | {

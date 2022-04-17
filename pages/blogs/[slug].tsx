@@ -13,6 +13,8 @@ import { FaHeart, FaCommentDots } from "react-icons/fa";
 import Link from "next/link";
 import NavLink from "../../components/NavLink";
 import MarkdownIt from "markdown-it";
+import fs from "fs";
+import path from "path";
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -126,9 +128,7 @@ const SingleBlog: NextPage<SingleBlogPageProps> = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = await devtoService(
-    process.env.DEVTO_API_KEY!
-  ).getAllMyArticles(100);
+  let articles: BatchArticle[] = [];
   const paths: (
     | string
     | {
@@ -136,6 +136,23 @@ export const getStaticPaths: GetStaticPaths = async () => {
         locale?: string | undefined;
       }
   )[] = [];
+  const cachedContent = fs.readFileSync(
+    path.join(process.cwd(), "buildCache.json"),
+    "utf-8"
+  );
+  const cache = JSON.parse(cachedContent);
+  if (!!cache) {
+    articles = cache;
+  } else {
+    articles = await devtoService(process.env.DEVTO_API_KEY!).getAllMyArticles(
+      30
+    );
+    fs.writeFileSync(
+      path.join(process.cwd(), "buildCache.json"),
+      JSON.stringify(articles)
+    );
+  }
+
   articles.forEach((a) => {
     paths.push({
       params: {
@@ -151,9 +168,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams;
-  const devToArticles = await devtoService(
-    process.env.DEVTO_API_KEY!
-  ).getAllMyArticles(30);
+  const cacheContent = fs.readFileSync(
+    path.join(process.cwd(), "buildCache.json"),
+    "utf-8"
+  );
+  const devToArticles: BatchArticle[] = JSON.parse(
+    cacheContent as unknown as string
+  );
   const devToArticle = devToArticles.find((a) => a.slug === slug);
   const md = new MarkdownIt();
   if (!devToArticle) {
