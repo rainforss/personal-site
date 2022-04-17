@@ -46,7 +46,7 @@ const RotatingText: React.FunctionComponent<IRotatingTextProps> = (props) => {
     <div
       className={`h-10 flex flex-row justify-start items-center absolute bottom-0 left-0 -translate-x-${
         props.translateX || "1/2"
-      } translate-y-${props.translateY || "1/2"}`}
+      } translate-y-1/2`}
     >
       <div className="h-1 w-4 relative bg-slate-400 mr-4 overflow-hidden">
         <motion.div
