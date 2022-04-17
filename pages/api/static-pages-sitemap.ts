@@ -10,6 +10,7 @@ const siteMapRoute = async (req: NextApiRequest, res: NextApiResponse) => {
     smStream.write({ url: "/", changefreq: "weekly", priority: 0.8 });
     smStream.write({ url: "/about", changefreq: "weekly", priority: 0.8 });
     smStream.write({ url: "/projects", changefreq: "weekly", priority: 0.8 });
+    smStream.write({ url: "/blogs", changefreq: "daily", priority: 0.9 });
     smStream.write({ url: "/contact", changefreq: "weekly", priority: 0.8 });
 
     smStream.end();

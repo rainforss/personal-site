@@ -75,10 +75,7 @@ const SingleBlog: NextPage<SingleBlogPageProps> = ({
                     if (a.slug !== devToArticle.slug)
                       return (
                         <div key={a.id}>
-                          <Link
-                            href={`http://localhost:3000/blogs/${a.slug}`}
-                            passHref
-                          >
+                          <Link href={`/blogs/${a.slug}`} passHref>
                             <a className="underline">{a.title}</a>
                           </Link>
                         </div>
@@ -130,7 +127,7 @@ const SingleBlog: NextPage<SingleBlogPageProps> = ({
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await devtoService(
     process.env.DEVTO_API_KEY!
-  ).getAllMyArticles();
+  ).getAllMyArticles(100);
   const paths: (
     | string
     | {

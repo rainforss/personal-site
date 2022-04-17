@@ -161,6 +161,29 @@ const Navigation: React.FunctionComponent<INavigationProps> = (props) => {
           variants={menuItem}
         >
           <motion.div whileHover="hover">
+            <Link href="/blogs" passHref>
+              <motion.a
+                className="text-white text-6xl"
+                variants={linkTextVariants}
+              >
+                Blogs
+              </motion.a>
+            </Link>
+            <div className="relative w-full h-1 mt-2 overflow-hidden">
+              <span className="absolute bottom-0 left-0 w-full h-1 bg-slate-300"></span>
+              <motion.span
+                className="absolute bottom-0 left-0 w-full h-1 bg-white z-10"
+                variants={linkVariants}
+              ></motion.span>
+            </div>
+          </motion.div>
+        </motion.div>
+        <motion.div
+          className="font-main-font"
+          initial={{ transform: "translateX(200%)", opacity: 0 }}
+          variants={menuItem}
+        >
+          <motion.div whileHover="hover">
             <Link href="/contact" passHref>
               <motion.a
                 className="text-white text-6xl"

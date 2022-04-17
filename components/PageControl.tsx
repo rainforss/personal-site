@@ -83,7 +83,7 @@ const PageControl: React.FunctionComponent<IPageControlProps> = (props) => {
       className="h-21 w-10 flex flex-col justify-between items-stretch absolute top-1/2 right-20 z-20"
     >
       <div
-        className="h-10 w-full flex justify-center items-center text-white relative overflow-hidden"
+        className="h-10 w-full flex justify-center items-center text-[#fc7c2c] relative overflow-hidden"
         onClick={props.prev}
       >
         <motion.div

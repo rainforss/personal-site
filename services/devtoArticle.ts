@@ -3,10 +3,13 @@ import { BatchArticle, SingleArticle } from "../types/devto";
 
 export const devtoService = (apiKey: string) => {
   return {
-    getAllMyArticles: async () => {
-      const result = await axios.get("https://dev.to/api/articles/me", {
-        headers: { "api-key": apiKey },
-      });
+    getAllMyArticles: async (size: number) => {
+      const result = await axios.get(
+        `https://dev.to/api/articles/me?page=1&per_page=${size}`,
+        {
+          headers: { "api-key": apiKey },
+        }
+      );
       return result.data as BatchArticle[];
     },
     getMyArticlesByPage: async (pageNumber: number, pageLimit: number) => {

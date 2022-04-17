@@ -16,7 +16,7 @@ interface IBlogScreenProps {
   devtoArticles?: BatchArticle[];
 }
 
-const blogVariants: Variants = {
+export const blogVariants: Variants = {
   enter: (i) => ({
     transform: i > 0 ? "translateX(100%)" : `translateX(-100%)`,
     opacity: 0,
@@ -45,7 +45,7 @@ const BlogScreen: React.FunctionComponent<IBlogScreenProps> = (props) => {
       exit="leave"
       transition={{ duration: 0.5 }}
     >
-      <AnimatePresence custom={direction}>
+      <AnimatePresence custom={direction} initial={false}>
         {props.devtoArticles &&
           props.devtoArticles.map((a, index) => {
             if (index === currentArticle - 1)
@@ -58,7 +58,7 @@ const BlogScreen: React.FunctionComponent<IBlogScreenProps> = (props) => {
                   initial="enter"
                   animate="center"
                   exit="leave"
-                  transition={{ delay: 0.2, duration: 0.5 }}
+                  transition={{ duration: 0.5 }}
                 >
                   <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center border-2 rounded-full w-8 h-8">
                     <span className="text-2xl">{currentArticle}</span>
@@ -139,6 +139,11 @@ const BlogScreen: React.FunctionComponent<IBlogScreenProps> = (props) => {
               });
             }}
           />
+        </div>
+      </div>
+      <div className="col-start-2 col-span-2 row-start-3 row-span-2 flex justify-center items-center">
+        <div className="relative">
+          <NavLink text="All" url="/blogs/pages/1" />
         </div>
       </div>
       <div className="col-start-3 col-span-2 row-start-3 row-span-2 flex justify-center items-center">

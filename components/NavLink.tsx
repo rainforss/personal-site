@@ -6,6 +6,7 @@ import Link from "next/link";
 interface INavLinkProps {
   text: string;
   url: string;
+  disabled?: boolean;
 }
 
 export const linkVariants: Variants = {

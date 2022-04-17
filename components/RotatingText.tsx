@@ -55,7 +55,7 @@ const RotatingText: React.FunctionComponent<IRotatingTextProps> = (props) => {
           variants={track}
         ></motion.div>
       </div>
-      <span className="text-white mr-4">{props.title}</span>
+      <span className="text-[#fc7c2c] mr-4">{props.title}</span>
       <div className={`relative overflow-hidden h-full w-32`}>
         {props.rotatingTexts &&
           props.rotatingTexts.map((t, index) => (
