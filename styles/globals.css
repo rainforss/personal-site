@@ -37,3 +37,26 @@ a {
   background: #fc7c2c;
   border-radius: 10px;
 }
+
+.blog > p {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.blog em,
+strong {
+  color: #fc7c2c;
+}
+
+.blog a {
+  color: #fc7c2c;
+  text-decoration: underline;
+}
+
+.blog ul {
+  padding-top: 1rem;
+}
+
+.blog hr {
+  border-color: #fc7c2c;
+}

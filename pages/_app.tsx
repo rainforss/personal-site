@@ -5,11 +5,7 @@ import { AnimatePresence } from "framer-motion";
 function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <AnimatePresence exitBeforeEnter>
-      <Component
-        {...pageProps}
-        canonical={`http://localhost:3000${router.route}`}
-        key={`http://localhost:3000${router.route}`}
-      />
+      <Component {...pageProps} key={`http://localhost:3000${router.asPath}`} />
     </AnimatePresence>
   );
 }

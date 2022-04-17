@@ -47,7 +47,7 @@ const NavLink: React.FunctionComponent<INavLinkProps> = (props) => {
         </motion.a>
       </Link>
       <div className="relative w-full h-1 mt-2 overflow-hidden">
-        <span className="absolute bottom-0 left-0 w-full h-1 bg-slate-300"></span>
+        <span className="absolute bottom-0 left-0 w-full h-1 bg-slate-500"></span>
         <motion.span
           className="absolute bottom-0 left-0 w-full h-1 bg-white z-10"
           variants={linkVariants}

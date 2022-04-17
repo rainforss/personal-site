@@ -21,6 +21,9 @@ module.exports = {
       fontFamily: {
         "main-font": ["Saira Semi Condensed"],
       },
+      textDecorationColor: {
+        "r-orange": "#fc7c2c",
+      },
     },
   },
   plugins: [],

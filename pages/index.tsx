@@ -1,5 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import React from "react";
 import GridBackground from "../components/GridBackground";
 import Layout from "../components/Layout";
@@ -12,8 +12,14 @@ import ProjectScreen from "../components/home-screens/ProjectScreen";
 import { usePrevious } from "../hooks/usePrevious";
 import Logo from "../components/Logo";
 import { NextSeo } from "next-seo";
+import { devtoService } from "../services/devtoArticle";
+import { BatchArticle } from "../types/devto";
 
-const Home: NextPage = () => {
+interface HomePageProps {
+  devToArticles: BatchArticle[];
+}
+
+const Home: NextPage<HomePageProps> = ({ devToArticles }) => {
   const [[currentScreen, direction], setCurrentScreen] = React.useState([1, 0]);
   const previousScreen = usePrevious(currentScreen);
   const scroll = (newDirection: number) => {
@@ -117,7 +123,13 @@ const Home: NextPage = () => {
             {currentScreen === 3 && (
               <ProjectScreen key="3" custom={direction} />
             )}
-            {currentScreen === 4 && <BlogScreen key="4" custom={direction} />}
+            {currentScreen === 4 && (
+              <BlogScreen
+                key="4"
+                custom={direction}
+                devtoArticles={devToArticles}
+              />
+            )}
             {currentScreen === 5 && (
               <ContactScreen key="5" custom={direction} />
             )}
@@ -126,6 +138,17 @@ const Home: NextPage = () => {
       </Layout>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const devToArticles = await devtoService(
+    process.env.DEVTO_API_KEY!
+  ).getAllMyArticles();
+  return {
+    props: {
+      devToArticles,
+    },
+  };
 };
 
 export default Home;
