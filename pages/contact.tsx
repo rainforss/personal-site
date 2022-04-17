@@ -165,14 +165,22 @@ const Contact: NextPage = () => {
                   </article>
                 </div>
               </div>
+              <div className="col-start-4 col-span-1 row-start-1 row-span-1 text-slate-200 relative flex justify-center items-center">
+                <div className="relative">
+                  <NavLink text="DEV" url="https://dev.to/rainforss" />
+                </div>
+              </div>
               <div className="col-start-4 col-span-1 row-start-2 row-span-1 text-slate-200 relative flex justify-center items-center">
                 <div className="relative">
-                  <NavLink text="LinkedIn" url="/about" />
+                  <NavLink
+                    text="LinkedIn"
+                    url="https://www.linkedin.com/in/jake-chen-210818128/"
+                  />
                 </div>
               </div>
               <div className="col-start-4 col-span-1 row-start-3 row-span-1 text-slate-200 relative flex justify-center items-center">
                 <div className="relative">
-                  <NavLink text="Github" url="/about" />
+                  <NavLink text="Github" url="https://github.com/rainforss" />
                 </div>
               </div>
             </div>
