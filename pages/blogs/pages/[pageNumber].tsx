@@ -230,7 +230,7 @@ const Blogs: NextPage<BlogsPageProps> = ({ articles }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await devtoService(
     process.env.DEVTO_API_KEY!
-  ).getAllMyArticles(100);
+  ).getAllMyArticles(30);
   const paths: (
     | string
     | {

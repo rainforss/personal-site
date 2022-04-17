@@ -143,7 +143,7 @@ const Home: NextPage<HomePageProps> = ({ devToArticles }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const devToArticles = await devtoService(
     process.env.DEVTO_API_KEY!
-  ).getAllMyArticles(100);
+  ).getAllMyArticles(30);
   return {
     props: {
       devToArticles,

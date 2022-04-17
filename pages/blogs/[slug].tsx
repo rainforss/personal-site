@@ -153,7 +153,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams;
   const devToArticles = await devtoService(
     process.env.DEVTO_API_KEY!
-  ).getAllMyArticles(50);
+  ).getAllMyArticles(30);
   const devToArticle = devToArticles.find((a) => a.slug === slug);
   const md = new MarkdownIt();
   if (!devToArticle) {
