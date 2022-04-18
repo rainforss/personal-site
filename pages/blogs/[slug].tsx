@@ -136,22 +136,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
         locale?: string | undefined;
       }
   )[] = [];
-  const cachedContent = fs.readFileSync(
-    path.join(process.cwd(), "buildCache.json"),
-    "utf-8"
+
+  articles = await devtoService(process.env.DEVTO_API_KEY!).getAllMyArticles(
+    30
   );
-  const cache = JSON.parse(cachedContent);
-  if (!!cache) {
-    articles = cache;
-  } else {
-    articles = await devtoService(process.env.DEVTO_API_KEY!).getAllMyArticles(
-      30
-    );
-    fs.writeFileSync(
-      path.join(process.cwd(), "buildCache.json"),
-      JSON.stringify(articles)
-    );
-  }
+  fs.writeFileSync(
+    path.join(process.cwd(), "buildCache.json"),
+    JSON.stringify(articles)
+  );
 
   articles.forEach((a) => {
     paths.push({

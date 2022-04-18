@@ -60,3 +60,16 @@ strong {
 .blog hr {
   border-color: #fc7c2c;
 }
+
+.blog code {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: black;
+  display: block;
+}
+
+.blog blockquote {
+  font-size: 1.75rem;
+}
