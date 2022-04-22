@@ -12,7 +12,7 @@ import GridBackground from "../../../components/GridBackground";
 import { screen } from "../../../components/home-screens/EntryScreen";
 import Layout from "../../../components/Layout";
 import Logo from "../../../components/Logo";
-import NavLink, { linkTextVariants } from "../../../components/NavLink";
+import { linkTextVariants } from "../../../components/NavLink";
 import PageControl from "../../../components/PageControl";
 import UnderlineButton from "../../../components/UnderlineButton";
 import { usePrevious } from "../../../hooks/usePrevious";

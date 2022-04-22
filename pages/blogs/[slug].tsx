@@ -87,7 +87,7 @@ const SingleBlog: NextPage<SingleBlogPageProps> = ({
                 </div>
               </div>
               <div className="col-start-4 col-span-1 row-start-4 row-span-1 text-slate-200 flex flex-col justify-center items-center">
-                <NavLink text="All blogs" url="/blogs" />
+                <NavLink text="All blogs" url="/blogs/pages/1" />
               </div>
               <div className="col-start-2 col-span-2 row-start-1 row-span-4 text-slate-200 py-16 overflow-hidden">
                 <div className="h-full px-8 overflow-y-auto">
