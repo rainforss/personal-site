@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/saira": "^4.5.5",
     "axios": "^0.26.1",
     "framer-motion": "^6.2.8",
     "markdown-it": "^12.3.2",

@@ -161,7 +161,7 @@ const Navigation: React.FunctionComponent<INavigationProps> = (props) => {
           variants={menuItem}
         >
           <motion.div whileHover="hover">
-            <Link href="/blogs" passHref>
+            <Link href="/blogs/pages/1" passHref>
               <motion.a
                 className="text-white text-6xl"
                 variants={linkTextVariants}

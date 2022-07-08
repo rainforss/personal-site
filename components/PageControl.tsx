@@ -72,6 +72,35 @@ export const track: Variants = {
 };
 
 const PageControl: React.FunctionComponent<IPageControlProps> = (props) => {
+  const variantTrack: Variants = {
+    trackStep: (i) => {
+      if (i.current === 1 && i.previous === 5) {
+        return {
+          transform: [
+            "translateX(100%)",
+            "translateX(200%)",
+            "translateX(0)",
+            "translateX(20%)",
+          ],
+          transition: { times: [0, 0.3, 0.3, 1], duration: 1 },
+        };
+      }
+      return {
+        transform: `translateX(${i.current * (100 / props.max)}%)`,
+        transitionTimingFunction: "cubic-bezier(0.2,-2,0.8,2)",
+        transition: { duration: 1 },
+      };
+    },
+    trackContinuous: {
+      transform: [
+        "translateX(100%)",
+        "translateX(200%)",
+        "translateX(0)",
+        "translateX(100%)",
+      ],
+      transition: { times: [0, 0.2, 0.2, 1], duration: 4, repeat: Infinity },
+    },
+  };
   const controls = useAnimation();
   controls.start("rotateIn");
   return (
@@ -105,7 +134,7 @@ const PageControl: React.FunctionComponent<IPageControlProps> = (props) => {
         <motion.div
           className="h-full w-full absolute top-0 -left-full bg-white z-20"
           animate="trackStep"
-          variants={track}
+          variants={variantTrack}
           custom={{ current: props.current, previous: props.previous }}
         ></motion.div>
       </div>
