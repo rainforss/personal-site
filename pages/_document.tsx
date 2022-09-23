@@ -15,7 +15,10 @@ const MyDocument = () => {
           rel="stylesheet"
         />
         <div id="dChSPZufhxuKY7ZVuvGwVVm5t7r3_UptQ-FbsB_LJvis"></div>
-        <script src="https://mktdplp102cdn.azureedge.net/public/latest/js/ws-tracking.js?v=1.84.2007"></script>
+        <script
+          async
+          src="https://mktdplp102cdn.azureedge.net/public/latest/js/ws-tracking.js?v=1.84.2007"
+        ></script>
         <div
           className="d365-mkt-config"
           style={{ display: "none" }}
